@@ -7,10 +7,10 @@ import datetime
 import re
 from datetime import datetime, timedelta
 
-def getTime(timeMin):
+def getTime(timeMins):
     minutes = timedelta(minutes=timeMin)
     d = datetime(1,1,1) + minutes
-    
+
     return d.day-1, d.hour, d.minute
 
 
