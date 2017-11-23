@@ -7,11 +7,11 @@ import datetime
 import re
 from datetime import datetime, timedelta
 
-def getTime(timeMins):
-    minutes = timedelta(minutes=timeMin)
-    d = datetime(1,1,1) + minutes
+#def getTime(timeMins):
+#    minutes = timedelta(minutes=timeMin)
+#    d = datetime(1,1,1) + minutes
 
-    return d.day-1, d.hour, d.minute
+#    return d.day-1, d.hour, d.minute
 
 
 # Inputs
@@ -91,6 +91,6 @@ for x in json_worklog_obj:
     i+=1
 
 for key, value in users.items():
-    finalTime = getTime(value)
-    print(finalTime)
+    #finalTime = getTime(value)
+    #print(finalTime)
     print("\nUser " + "\"" + str(key) + "\"" + " has logged a total amount of " + str(value) + " minutes.")
