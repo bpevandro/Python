@@ -25,7 +25,7 @@ auth_email = input("\nAuth email address: ")
 auth_pass = getpass.getpass('\nAuth password: ')
 
 # Make Request
-response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=('epereira@atlassian.com', 'qjZt1Y6NXhZACv0swF9HD6B4'))
+response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=('<email_address>', '<pass_or_APItoken>'))
 
 data = response.json()
 
