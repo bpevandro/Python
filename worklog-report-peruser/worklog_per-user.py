@@ -25,7 +25,7 @@ auth_email = input("\nAuth email address: ")
 auth_pass = getpass.getpass('\nAuth password: ')
 
 # Make Request
-response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=('<email_address>', '<pass_or_APItoken>'))
+response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=(auth_email, auth_pass))
 
 data = response.json()
 
@@ -91,5 +91,6 @@ for x in json_worklog_obj:
     i+=1
 
 for key, value in users.items():
-
+    finalTime = getTime(value)
+    print(finalTime)
     print("\nUser " + "\"" + str(key) + "\"" + " has logged a total amount of " + str(value) + " minutes.")
