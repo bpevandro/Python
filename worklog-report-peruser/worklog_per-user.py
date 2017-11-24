@@ -7,12 +7,12 @@ import datetime
 import re
 from datetime import datetime, timedelta
 
-#def getTime(timeMins):
-#    minutes = timedelta(minutes=timeMin)
-#    d = datetime(1,1,1) + minutes
-
-#    return d.day-1, d.hour, d.minute
-
+# It converts minutes to d:h:m format
+def getTime(timeMin):
+    test=timeMin
+    minutes = timedelta(minutes=test)
+    d = datetime(1,1,1) + minutes
+    return d
 
 # Inputs
 url = input("\nWhat's the instance's URL without \"https\"? ")
@@ -25,7 +25,7 @@ auth_email = input("\nAuth email address: ")
 auth_pass = getpass.getpass('\nAuth password: ')
 
 # Make Request
-response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=(auth_email, auth_pass))
+response = requests.get("https://"+url+endpoint, headers={"content-type":"application/json"}, auth=('epereira@atlassian.com', 'qjZt1Y6NXhZACv0swF9HD6B4'))
 
 data = response.json()
 
@@ -91,6 +91,7 @@ for x in json_worklog_obj:
     i+=1
 
 for key, value in users.items():
-    #finalTime = getTime(value)
-    #print(finalTime)
-    print("\nUser " + "\"" + str(key) + "\"" + " has logged a total amount of " + str(value) + " minutes.")
+    finalTime = getTime(value)
+    finalDay = finalTime.day-1
+
+    print("\nUser " + "\"" + str(key) + "\"" + " has logged a total amount of " + str(finalDay) + "d " + str(finalTime.hour) + "h " + str(finalTime.minute) + "m.")
