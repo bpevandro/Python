@@ -1,2 +1,3 @@
-# Python
-This repository contains some Python scripts developed for fun. Please, use them at your own risk.
+# Worklog report by user
+Worklog by user is a python script that retrieves from a specific provided issue key the information on how much time a user spent on it.
+
