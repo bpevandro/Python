@@ -32,18 +32,6 @@ with open('<file-here>.csv') as csvfile:
 
 		elif response.status_code == 401:
 			print(response.status_code, response.text)
-			logFile = open('/Users/ebaginski/Desktop/users&group_membership/logs/users_log.txt', 'w+')
-			logFile.write('%s %s' % (datetime.datetime.now(), str(response.status_code)))
-			logFile.write(' ')
-			logFile.write(response.text)
-			logFile.write('\n')
-			logFile.close()
 			sys.exit()
 		else:
 			print(response.status_code, response.text)
-			logFile = open('/Users/ebaginski/Desktop/users&group_membership/logs/users_log.txt', 'w+')
-			logFile.write('%s %s' % (datetime.datetime.now(), str(response.status_code)))
-			logFile.write(' ')
-			logFile.write(response.text)
-			logFile.write('\n')
-			logFile.close()

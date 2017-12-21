@@ -16,27 +16,21 @@ def createGroup(groupName):
 		makeRequest(username, groupname)
 	else:
 		print(response.status_code, response.text)
-		logFile = open('/Users/ebaginski/Desktop/users&group_membership/logs/group_log.txt','a')
-		logFile.write('%s %s' % (datetime.datetime.now(), str(response.status_code)))
-		logFile.write(' ') 
-		logFile.write(response.text)
-		logFile.write('\n')
-		logFile.close()	
 	return
-	
+
 def makeRequest(username, groupname):
 	# MAKE REQUEST
 	data = {'name':username}
 	print ('\nAttempting to add '+'"'+username+'"'+' into the '+'"'+groupname+'"'+' group..')
 	response = requests.post("https://"+url+endpoint, headers={"content-type":"application/json"}, json=data, auth=(auth_email, auth_pass))
-	
+
 	# PRINT RESPONSE
 	if response.status_code == 201:
 		print(response.status_code, 'User','"'+username+'"','was added into the group '+groupname+' successfully!')
 
 	elif "The group" in response.text and response.status_code == 404:
 		print ('Group'+' "'+groupname+'" '+'does not exist in the target instance. Attempting to create it..')
-		createGroup(groupname)	
+		createGroup(groupname)
 
 	elif response.status_code == 401:
 		print(response.status_code, response.text)
@@ -44,12 +38,6 @@ def makeRequest(username, groupname):
 
 	else:
 		print(response.status_code, response.text)
-		logFile = open('/Users/ebaginski/Desktop/users&group_membership/logs/group_log.txt','a')
-		logFile.write('%s %s' % (datetime.datetime.now(), str(response.status_code)))
-		logFile.write(' ') 
-		logFile.write(response.text)
-		logFile.write('\n')
-		logFile.close()		
 
 	return response
 
@@ -68,16 +56,7 @@ with open('group_memberships.csv') as csvfile:
 
 		# BUG preventing creation using the endpoint below: https://jira.atlassian.com/browse/JRACLOUD-67118
 		endpoint = '/rest/api/latest/group/user?groupname='+groupname.strip()
-		#endpoint = '/admin/rest/um/1/user/group/direct?groupname='+groupname.strip()+'&username='+username.strip() 
+		#endpoint = '/admin/rest/um/1/user/group/direct?groupname='+groupname.strip()+'&username='+username.strip()
 
 		# MAKE REQUEST
 		response = makeRequest(username, groupname)
-
-		
-
-		
-
-		
-	
-
-
